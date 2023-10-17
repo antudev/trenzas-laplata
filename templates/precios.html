@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Precios de Trenzado</h1>
+<table>
+    <tr>
+        <th>Tipo de Trenzado</th>
+        <th>Cantidad de pelo</th>
+        <th>Precio</th>
+    </tr>
+    {% for trenzado in trenzados %}
+        <tr>
+            <td>{{ trenzado.tipo }}</td>
+            <td>
+                {% for precio_descripcion in trenzado.precios_descripciones %}
+                    <p>{{ precio_descripcion.descripcion }}</p>
+                {% endfor %}
+            </td>
+            <td>
+                {% for precio_descripcion in trenzado.precios_descripciones %}
+                    <p>${{ precio_descripcion.precio }}</p>
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

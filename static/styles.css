@@ -1,0 +1,743 @@
+/* static/styles.css */
+/* Definición de la fuente 'Angels' */
+@font-face {
+    font-family: 'Angels';
+    src: url('../static/fonts/aAbstractGroovy.ttf') format('truetype');
+    font-weight: small;
+    font-style: small;
+    font-weight: bold;
+}
+
+/* Definición de la fuente 'Inconsolata' */
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('../static/fonts/Inconsolata-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: small;
+    font-style: small;
+    font-weight: bold;
+}
+
+body {
+    font-family: 'Angels', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: rgb(249, 0, 83);
+    /*background: linear-gradient(to bottom, rgb(255, 5, 148), rgb(253, 245, 202)); */
+    background-color: rgb(255, 234, 248);
+    background-image: url('/static/trenzas.laplata.fondo.jpeg');
+    background-repeat: repeat;
+    background-size: 45%; /* Cambia el tamaño de la imagen */
+    font-size: 10px; 
+    font-weight: 200; 
+    min-height: 50vh; /*  altura de la ventana */
+    min-width: 50vh; /*  ancho */
+    
+}
+
+
+/* Estilos para distintos titulos del texto */
+h2, h3, p {
+    color: rgb(255, 223, 241);
+    background-color: rgba(255, 5, 148, 0.8); /* Fondo semitransparente */
+    padding: 10px; /* Agrega un espacio interno para que el fondo no esté pegado al texto */
+    border-radius: 10px;
+}
+
+h1 {
+    background-color: rgba(255, 5, 148, 0.8); /* Fondo semitransparente */
+    font-family: 'Angels', sans-serif;
+    text-align: center;
+    padding: 20px;
+    color: rgb(255, 223, 241);
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+/* Estilos para la barra de navegación */
+.navbar {
+    top: 0;
+    background-color: rgb(255, 5, 148); /* Color de fondo */
+    color: #fff; /* Color del texto */
+    padding: 10px; /* Espaciado interno */
+    display: flex; /* Para alinear elementos horizontalmente */
+    justify-content: space-between; /* Espacio uniforme entre los elementos */
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega un efecto de sombra */
+    z-index: 1000; /* Asegura que el navbar esté por encima de otros elementos */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Agrega una transición suave */
+}
+
+/* Añade este estilo para ocultar el navbar cuando el usuario hace scroll hacia abajo */
+.navbar.scroll-down {
+    transform: translateY(-100%);
+}
+
+/* Añade este estilo para mostrar el navbar cuando el usuario hace scroll hacia arriba */
+.navbar.scroll-up {
+    transform: translateY(0);
+}
+
+
+.navbar ul {
+    display: none;/* Por defecto, el menú está oculto */
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar ul li {
+    margin-right: 20px; /* Espaciado entre elementos de la lista */
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff; /* Color del texto */
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: rgb(255, 193, 245); /* Color al hacer hover */
+}
+
+/* Cuando se agrega la clase 'menu-open', el menú se muestra */
+.navbar.menu-open ul {
+    display: block;
+}
+.navbar ul {
+    list-style-type: none; /* Elimina los marcadores de lista */
+    padding: 0; /* Elimina el relleno predeterminado */
+    display: flex; /* Alinea los elementos horizontalmente */
+    flex-direction: column; /* Cambia la dirección del flexbox a columna */
+    position: absolute; /* Alinea con respecto al navbar */
+    top: 100px; /* Ajusta la posición desde la parte superior */
+    left: -200px; /* Oculta la lista fuera de la pantalla */
+    width: 200px; /* Ancho de la lista desplegable */
+    background-color: rgba(255, 5, 148, 0.8); /* Fondo semitransparente */
+    border-radius: 5px; /* Borde redondeado */
+    transition: left 0.3s ease; /* Animación al mostrar/ocultar */
+}
+
+.navbar.menu-open ul {
+    left: 0; /* Muestra la lista cuando el menú está abierto */
+}
+
+.navbar ul li {
+    padding: 10px; /* Espaciado entre elementos de la lista */
+    text-align: center; /* Centra el texto horizontalmente */
+    border-bottom: 1px solid #fff; /* Línea separadora entre elementos */
+}
+
+.navbar ul li:last-child {
+    border-bottom: none; /* Elimina la línea separadora del último elemento */
+}
+
+
+/* Estilos para el icono de hamburguesa (burger-menu) */
+.burger-menu svg {
+    width: 20px; /* Tamaño */
+    height: 20px;
+    fill: white; /* Color del icono */
+    vertical-align: middle; /* Alinea verticalmente el icono */
+}
+
+/* Estilos para el logo de Instagram */
+.instagram img {
+    width: 40px; /* Ajusta el tamaño según tus preferencias */
+    height: 40px;
+}
+
+/* Estilos para el logo de WhatsApp */
+.whatsapp img {
+    width: 40px; /* Ajusta el tamaño según tus preferencias */
+    height: 40px;
+    margin-right: 4px; /* Espaciado horizontal entre los logotipos */
+}
+
+/* Estilos para el título del navbar */
+.navbar h1 {
+    background-color: transparent;
+    font-size: 24px; /* Tamaño de fuente  */
+    font-family: 'Angels'; /* Familia de fuentes */
+    color:rgba(250, 168, 176); /* Color de texto */
+    transition: color 0.3s ease, font-size 0.3s ease; /* Agrega una animación suave */
+}
+
+.navbar h1:hover {
+    color: #fffdfd; /* Cambia el color al hacer hover */
+    font-size: 28px; /* Cambia el tamaño de la fuente al hacer hover */
+}
+
+/* Estilos para el navbar fijo */
+.navbar-fixed {
+    background-color: #fff; /* Color de fondo deseado cuando está fijo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra deseada cuando está fijo */
+}
+
+/* Estilos específicos para iPhone 12 Pro (390x844) */
+@media screen and (max-width: 390px) and (max-height: 844px) {
+    /* Ajusta el tamaño del logo de Instagram y WhatsApp */
+    .instagram img,
+    .whatsapp img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Cambia el tamaño de fuente del título del navbar */
+    .navbar h1 {
+        font-size: 16px;
+    }
+
+    .navbar {
+        width: 95%;
+        position: fixed; /* Navbar con posición fija en la parte superior */
+    }
+}
+
+/* Estilos específicos para iPad (768x1024) */
+@media screen and (min-width: 391px) and (max-width: 768px) and (min-height: 845px) and (max-height: 1024px) {
+    /* Ajusta el tamaño del logo de Instagram y WhatsApp */
+    .instagram img,
+    .whatsapp img {
+        width: 35px;
+        height: 35px;
+        margin-right: 35px;
+    }
+    
+    /* Cambia el tamaño de fuente del título del navbar */
+    .navbar h1 {
+        font-size: 22px;
+        
+    }
+
+    .navbar {
+        width: 98%;
+        position: fixed; /* Navbar con posición fija en la parte superior */
+    }
+
+    #tipo-rapado .mui-card-media img {
+        width: 50%; /* Establece el ancho de la imagen al 100% del contenedor */
+        height: auto; /* Ajusta la altura automáticamente */
+        border-radius: 10px;
+    }
+
+    #tipo-rapado {
+        justify-content: center; /* Centra los elementos */
+    }
+
+    #tipo-rapado .mui-card {
+        width: 45%; /* Ajusta el ancho de las tarjetas  */
+    }
+    
+    #tipos-extensiones .mui-card-media img {
+        width: 76%; /* Establece el ancho de la imagen en el contenedor */
+        height: auto; /* Ajusta la altura automáticamente */
+        background-color: rgba(255, 5, 148, 0.8); /* Cambia el fondo de las tarjetas a blanco */
+        
+    }
+}
+
+/* Estilos específicos para MacBook (1440x900) */
+@media screen and (min-width: 769px) and (max-width: 1440px) and (min-height: 1025px) and (max-height: 900px) {
+    /* Ajusta el tamaño del logo de Instagram y WhatsApp */
+    .instagram img,
+    .whatsapp img {
+        width: 50px;
+        height: 50px;
+        margin-right: 4px; /* Espaciado horizontal entre los logotipos */
+    }
+    
+    /* Cambia el tamaño de fuente del título del navbar y alinea al centro */
+    .navbar h1 {
+        font-size: 28px;
+        text-align: center; /* Alinea el texto al centro */
+        width: 100%; /* Asegura que el título ocupe todo el ancho de la barra de navegación */
+        margin: 0; /* Elimina el margen predeterminado */
+    }
+
+    /* Ajusta el ancho de la barra de navegación */
+    .navbar {
+        width: 100%; /* Usa el 100% del ancho disponible */
+        position: fixed; /* Navbar con posición fija en la parte superior */
+        display: flex; /* Para alinear elementos horizontalmente */
+        justify-content: center; /* Alinea el contenido al centro horizontalmente */
+        align-items: center; /* Alinea el contenido al centro verticalmente */
+    }
+    
+    /* Ajusta el ancho de los elementos de la barra de navegación */
+    .navbar ul li {
+        padding: 0 15px; /* Espaciado horizontal */
+    }
+    
+    #tipo-rapado .mui-card-media img{
+        
+        height: auto; /* Ajusta la altura automáticamente */
+        border-radius: 10px;
+    }
+    
+}
+
+/* Reglas de estilo específicas para dispositivos móviles */
+@media (max-width: 768px) {
+    table {
+        font-size: 8px; /* Disminuye el tamaño de fuente  */
+    }
+    th, td {
+        padding: 1.9px; /* Reduce el espacio entre celdas */
+    }
+    .spotify-container {
+        height: 30vh; /* Ajusta la altura del contenedor de Spotify  */
+    }
+    .chatbot-container {
+        position: fixed;
+        bottom: 0; /* Cambia la posición vertical a la parte inferior */
+        left: 0; /* Alinea a la izquierda */
+        right: 0; /* Ocupa todo el ancho disponible */
+        border-radius: 0; /* Quita el borde redondeado */
+        width: 100%; /* Ajusta el ancho al 100% */
+        box-shadow: none; /* Quita la sombra */
+        transform: translateY(0); /* Anula la transformación en Y */
+    }
+}
+
+/* Estilos del contenedor del chatbot */
+.chatbot-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color:     rgba(255, 5, 148, 0.8);   
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(238, 38, 171, 0.2);
+    width: 350px;
+    font-family: 'Inconsolata', sans-serif;
+    z-index: 3;
+}
+
+.chatbot-container.open {
+    display: block;
+    animation: fadeInUp 0.5s ease;
+    border-radius: 10px; /* Configuración para bordes redondeados */
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #fffcfc;
+    font-size: 16px;
+    cursor: pointer;    
+}
+
+/* Estilos de los mensajes del chat */
+.chat-message {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.received {
+    background-color: #f0f0f0;
+    text-align: left;
+}
+
+.response {
+    background-color: #e6005c;
+    color: #fff;
+    text-align: right;
+}
+
+/* Estilos del área de entrada de texto y botón */
+.chat-input {
+    font-family: 'Inconsolata', sans-serif;
+    display: flex;
+    align-items: center;
+    background-color: rgba(249, 0, 83, 0.5);
+    border-top: 1px solid #ddd;
+    padding: 5px; 
+    border-radius: 10px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.bn632-hover {
+    width: 100px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 15px;
+    height: 44px;
+    text-align:center;
+    border: none;
+    background-size: 100% 80%;
+    border-radius: 50px;
+    transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+  
+.bn632-hover:hover {
+    background-position: 100% 0;
+    transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+  
+.bn632-hover:focus {
+    outline: none;
+}
+  
+.bn632-hover.bn27 {
+    background-image: linear-gradient(
+      to right,
+      #ed6ea0,
+      rgb(249, 0, 83),
+      #f7186a,
+      rgb(255, 5, 148)
+    );
+    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+}
+
+#listado-precios h1 {
+    margin-top: 50px; /* Ajusta la posición desde la parte superior */
+    align-items: center;
+}
+
+#listado-precios table {
+    top: 100px; /* Ajusta la posición desde la parte superior */
+    font-family: 'Inconsolata', sans-serif;
+    color: rgb(255, 223, 241);
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: rgba(255, 5, 148, 0.8);/* Fondo rosa semitransparente */
+    box-shadow: 0 0 10px rgb(249, 0, 83);
+}
+
+#listado-precios th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+#listado-precios th {
+    background-color: rgba(255, 5, 148, 0.3);;
+}
+
+#listado-precios tr:nth-child(even) {
+    background-color: rgba(250, 168, 176, 0.5);
+}
+
+/* Estilos para la sección de ejemplos "tipo-rapado" */
+#tipo-rapado {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: rgba(255, 5, 148, 0.8);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#tipo-rapado h2 {
+    color: rgb(255, 223, 241);
+    font-size: 18px;
+    margin-bottom: 10px;
+    flex: 100%;
+}
+
+#tipo-rapado p {
+    margin-top: 10px;
+}
+
+#tipo-rapado strong {
+    font-weight: bold;
+}
+
+/* Estilos para las imágenes dentro de figure */
+#tipo-rapado .figure-container {
+    width: calc(50% - 20px); /* Ajustamos el ancho y reducimos el margen */
+    margin:0;
+    padding-left: 10px;
+    text-align: center; /* Centrar el contenido dentro de figure */
+}
+
+#tipo-rapado .figure-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Agregar estilos de Material-UI a las imágenes en "tipo-rapado" */
+#tipo-rapado .mui-card {
+    border-radius: 5px;
+}
+
+#tipo-rapado .mui-card-media {
+    padding-top: 0;
+    border-radius: 10px;
+}
+
+/* Estilos para la sección de ejemplos "tipos-extensiones" */
+#tipos-extensiones {
+    color: rgb(255, 223, 241);
+    margin: 20px 0; /* Añade margen superior e inferior para separar las secciones */
+    padding: 20px; /* Añade espacio interior para separar el contenido */
+    background-color: rgba(255, 5, 148, 0.8);/* Fondo rosa semitransparente */
+    border-radius: 10px; /* Añade bordes redondeados */
+    display: flex; /* Utiliza flexbox para alinear elementos */
+    flex-wrap: wrap; /* Permite el ajuste de elementos en varias filas */
+    justify-content: center; /* Distribuye los elementos de forma equitativa */
+}
+
+#tipos-extensiones h2 {
+    font-family: 'Inconsolata';
+    color: rgb(255, 223, 241);
+    font-size: 18px; /* Aumenta el tamaño de los títulos */
+    margin-bottom: 10px; /* Agrega margen inferior para separar el título del contenido */
+    flex: 100%; /* Establece el ancho al 100% en dispositivos móviles */
+}
+
+#tipos-extensiones ul {
+    background-color: rgba(255, 5, 148, 0.8); /* Fondo rosa semitransparente */
+    list-style-type: disc; /* Cambia el estilo de la lista a viñetas */
+    margin-left: 20px; /* Añade margen a la izquierda para indentar la lista */
+    margin-bottom: 10px; /* Agrega margen inferior para separar la lista del párrafo */
+    flex: 100%; /* Establece el ancho al 100% en dispositivos móviles */
+    border-radius: 10px;
+}
+
+#tipos-extensiones p {
+    margin-top: 10px; /* Agrega margen superior para separar el párrafo del título */
+}
+
+#tipos-extensiones strong {
+    font-weight: bold; /* Hace que el texto fuerte sea en negrita */
+}
+
+/* Agregar estilos de Material-UI a las imágenes en "tipos-extensiones" */
+#tipos-extensiones .mui-card {
+    width: 80%; /* Establece el ancho de las tarjetas */
+    margin-right: 10px; /* Agrega margen a la derecha para separar las tarjetas */
+    margin-bottom: 10px; /* Agrega margen inferior para separar las tarjetas */
+    background-color: rgba(255, 5, 148, 0.8); /* Cambia el fondo de las tarjetas a blanco */
+    border-radius: 10px; /* Añade bordes redondeados a las tarjetas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega una sombra ligera a las tarjetas */
+    display: inline-flex; /* Utiliza flexbox para alinear elementos verticalmente */
+    flex-direction: column; /* Alinea los elementos verticalmente en cada tarjeta */
+}
+
+#tipos-extensiones .mui-card-media {
+    padding-top: 0; /* Establece el espacio para la imagen (elimina el espacio cuadrado) */
+    background-color: rgba(255, 5, 148, 0.8); /* Cambia el fondo de las tarjetas a blanco */
+    border-radius: 10px;
+}
+
+#tipos-extensiones .mui-card-list {
+    background-color: rgba(255, 5, 148, 0.8)
+}
+
+
+#tipos-extensiones .mui-card-media img {
+    width: 76%; /* Establece el ancho de la imagen en el contenedor */
+    height: auto; /* Ajusta la altura automáticamente */
+    background-color: rgba(255, 5, 148, 0.8); /* Cambia el fondo de las tarjetas a blanco */
+    
+}
+
+/* Estilos para .extension-container */
+#tipos-extensiones .extension-container {
+    margin-top: 20px; /* Agrega margen superior para separar los contenedores de extensión */
+    background-color: rgba(255, 223, 241, 0.5); /* Fondo semitransparente */
+    border: 2px solid rgb(255, 5, 148); /* Borde sólido rosa */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px; /* Espacio interior para separar el contenido */
+}
+
+/* Estilos para .image-container */
+#tipos-extensiones .image-container {
+    text-align: center; /* Centra el contenido horizontalmente */
+    padding: 10px; /* Espacio interior para separar la imagen del contenido */
+}
+
+/* Estilos para .mui-card-content */
+#tipos-extensiones .mui-card-content {
+    background-color: rgba(255, 223, 241, 0.8); /* Fondo semitransparente */
+    padding: 10px; /* Espacio interior para separar el contenido de la tarjeta */
+    text-align: center; /* Centra el contenido horizontalmente */
+    border-radius: 10px; /* Bordes redondeados */
+    margin-top: 10px; /* Agrega margen superior para separar las tarjetas */
+}
+
+#tipos-extensiones .arrow-left .arrow-right {
+    background-color: rgba(255, 5, 148, 0.8);
+}
+
+
+/* Estilos para el acordeón */
+#preguntas-section .accordion-header {
+    position: center;
+    font-family: 'Inconsolata';
+    font-weight: bold;
+    font-size: 16px; /* Tamaño del título del acordeón */
+    width: 90%;
+    color: rgb(255, 223, 241);
+    background-color: rgba(255, 5, 148, 0.8);/* Fondo rosa semitransparente */
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 1s ease;
+}
+
+#preguntas-section .accordion-header:hover {
+    background-color: rgba(250, 168, 176, 0.5);;
+}
+
+/* Estilos para el ícono del acordeón */
+#preguntas-section .accordion-header::before {
+    content: "\25BC"; /* Triángulo apuntando hacia abajo */
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+#preguntas-section .accordion-content.active + .accordion-header::before {
+    transform: rotate(180deg); /* Gira el triángulo hacia arriba cuando el contenido está activo */
+}
+
+
+#preguntas-section .accordion-content {
+    font-family: 'Inconsolata';
+    font-size: 18px; /* Tamaño del contenido del acordeón */
+    background-color: rgba(255, 5, 148, 0.8); /* Fondo semitransparente */
+    color: rgb(255, 223, 241);
+    padding: 0px;
+    text-align: center;
+    width: 90%;
+    max-height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+/* Estilos para la sección de Cuidados */
+#cuidados-section {
+    background-color: rgba(255, 5, 148, 0.8);/* Fondo rosa semitransparente */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#cuidados-section  h2 {
+    color: rgb(255, 223, 241);/* Color del título */
+    background-color: rgba(255, 5, 148, 0.8);
+    border-radius: 10px;
+}
+
+#cuidados-section ul {
+    list-style: disc inside; /* Estilo de lista con viñetas */
+    padding-left: 20px; /* Espacio a la izquierda de la lista */
+    font-family: 'Inconsolata', sans-serif;
+    color: rgb(255, 223, 241);
+    background-color: rgba(255, 5, 148, 0.8);
+    border-radius: 10px;
+}
+
+#cuidados-section p {
+    margin: 10px 0; /* Espacio alrededor de los párrafos */
+    line-height: 1.5; /* Espaciado entre líneas */
+}
+
+/* Estilos para el spotify-container */
+#spotify-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#title-container {
+    margin-bottom: 10px;
+}
+
+#spotify-player iframe {
+    border-radius: 12px;
+    width: 100%;
+    align-items: center;
+    max-width: 300px; /* Ajusta el ancho máximo según tus necesidades */
+    height: auto;
+}
+
+
+/* Estilos para el footer */
+footer {
+    
+    font-family: 'Inconsolata';
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 5, 148, 0.8);
+    color: #fff;
+    padding: 20px 0;
+    z-index: 2;
+    margin-top: 5px;
+    justify-content: center; /* Centra el contenido horizontalmente */
+}
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%; /* Asegura que el contenido no exceda el ancho de la ventana */
+    padding: 0 20px; /* Agrega espacio entre el contenido y los bordes del footer */
+  }
+  
+  .copyright {
+    font-size: 14px;
+  }
+  
+  .contact-info {
+    display: flex;
+    gap: 20px;
+    font-size: 10px;
+  }
+  
+  .contact-info img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Estilizar los enlaces */
+  .contact-info a {
+    text-decoration: none;
+    color: #fff; /* Texto en color blanco */
+  }
+  
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,459 @@
+<!-- trenzas.laplata/templates/base.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trenza$ La Plata</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <header>
+        <nav class="navbar">
+            <div class="burger-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M4 6l16 0"></path>
+                    <path d="M4 12l16 0"></path>
+                    <path d="M4 18l16 0"></path>
+                </svg>
+            </div>
+            <ul> <!-- Lista de elementos del menú -->
+                <li><a href="#listado-precios">Listado de Precios</a></li>
+                <li><a href="#tipo-rapado">Tipo de Rapado</a></li>
+                <li><a href="#tipos-extensiones">Tipos de Extensiones</a></li>
+                <li><a href="#cuidados-section">Cuidados</a></li>
+                <li><a href="#spotify-container">Playlist</a></li>
+                <li><a href="#preguntas-section">Preguntas</a></li>
+            </ul>
+            <h1>Trenza$ La Plata</h1>
+            <div class="instagram">
+                <a href="https://www.instagram.com/trenzas.laplata" onclick="redirectToInstagram()">
+                    <img src="{{ url_for('static', filename='images/logos/IGwhite.png') }}" alt="Instagram Logo">
+                </a>
+            </div>
+            <div class="whatsapp">
+                <a href="https://wa.me/+5492215655406/" onclick="redirectToWhatsApp()">
+                    <img src="{{ url_for('static', filename='images/logos/WPPwhite.png') }}" alt="Whatsapp Logo">
+                </a>
+            </div>
+            
+            <script>
+                function redirectToInstagram() {
+                    window.location.href = "https://www.instagram.com/trenzas.laplata";
+                }
+            
+                function redirectToWhatsApp() {
+                    window.location.href = "https://wa.me/+5492215655406/";
+                }
+            </script>
+            
+        </nav>
+    </header>
+   <main>
+     {% block content %}  
+     <div class="chatbot-container" id="chatbot" style= border-radius: 10px; >
+        <div class="chat" id="chat"></div>
+        <div class="chat-input">
+            <input type="text" id="pregunta" placeholder="Escribe tu pregunta...">
+            <button class="bn632-hover bn27" id="enviar">Enviar</button>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="White" fill="none" stroke-linecap="round" stroke-linejoin="round" id="cerrar">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M18 6l-12 12"></path>
+                <path d="M6 6l12 12"></path>
+             </svg>
+        </div>
+     </div>
+       <div class="title-container"    align-items: center>
+            
+               <h1>Trenza$ La Plata </h1>
+            
+        </div>
+    
+     <section id="listado-precios">
+        <table>
+            <tr>
+                <h1>Listado de Precios </h1>
+                <th>Tipo de Trenzado</th>
+                <th>Ejemplo</th>
+                <th>Cantidad de pelo</th>
+                <th>Precio Colores Lisos</th>
+                <th>Precio Colores Degrade</th>
+            </tr>
+             {% for trenzado_info in trenzados_data %}
+            <tr>
+                <td rowspan="2">{{ trenzado_info.tipo }}</td>
+                <td rowspan="2"><img src="{{ url_for('static', filename='images/' + trenzado_info.tipo + '.jpg') }}" alt="{{ trenzado_info.tipo }}" width="50"></td>
+                <td>rapado lateral/alto</td>
+                <td>${{ trenzado_info.precios.poca_rapadoalto }}</td>
+                <td>${{ trenzado_info.precios.poca_rapadoalto_degrade }}</td>
+            </tr>
+            <tr>
+                <td>cabeza completa</td>
+                <td>${{ trenzado_info.precios.mucha }}</td>
+                <td>${{ trenzado_info.precios.mucha_degrade }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+     </section>
+<!-- Ejemplo de tipo de pelo liso o degradé -->
+<section id="tipos-extensiones">
+    <h2>Ejemplos de tipo de extensiones:</h2>
+    <div class="extension-container">
+        <h3>Lisos</h3>
+        <ul class="mui-card-list">
+            <li class="mui-card">
+                <div class="mui-card-content">
+                    <div class="mui-card-media">
+                        <img id="imagen-lisas" src="{{ lisasImages[0] }}" alt="Pelo Liso 1" width="200">
+                     </div>
+                    <!-- Flecha izquierda -->
+                    <svg onclick="cambiarImagen('lisas', 'anterior')" xmlns="http://www.w3.org/2000/svg" class="arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M5 12l14 0"></path>
+                        <path d="M5 12l6 6"></path>
+                        <path d="M5 12l6 -6"></path>
+                     </svg>
+                     <!-- Flecha derecha -->
+                    <svg onclick="cambiarImagen('lisas', 'siguiente')" xmlns="http://www.w3.org/2000/svg" class="arrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M5 12l14 0"></path>
+                        <path d="M13 18l6 -6"></path>
+                        <path d="M13 6l6 6"></path>
+                     </svg>
+                </div>
+            </li>
+            <!-- Repite los elementos anteriores para cada imagen de pelo liso -->
+        </ul>
+    </div>
+    <div class="extension-container">
+        <h3>Degrade</h3>
+        <ul class="mui-card-list">
+            <li class="mui-card">
+                
+                <div class="mui-card-content">
+                    <div class="mui-card-media">
+                        <img id="imagen-degrade" src="{{ degradeImages[0] }}" alt="Pelo Degrade 1" width="200">
+                    </div>
+                    <!-- Flecha izquierda -->
+                    <svg onclick="cambiarImagen('degrade', 'anterior')" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M5 12l14 0"></path>
+                        <path d="M5 12l6 6"></path>
+                        <path d="M5 12l6 -6"></path>
+                     </svg>
+                     <!-- Flecha derecha -->
+                    <svg onclick="cambiarImagen('degrade', 'siguiente')" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M5 12l14 0"></path>
+                        <path d="M13 18l6 -6"></path>
+                        <path d="M13 6l6 6"></path>
+                     </svg>
+                </div>
+            </li>
+            <!-- Repite los elementos anteriores para cada imagen de pelo degrade -->
+        </ul>
+    </div>
+</section>
+<!-- Ejemplo de tipo de rapado -->
+<section id="tipo-rapado">
+    <div class="title-container">
+        <h2>Ejemplos de tipo de rapado:</h2>
+    </div>
+    <div class="figure-container mui-card">
+        <figure>
+            <img src="{{ url_for('static', filename='images/Rapado1.jpeg') }}" alt="Rapado 1" width="120">
+        </figure>
+    </div>
+    <div class="figure-container mui-card">
+        <figure>
+            <img src="{{ url_for('static', filename='images/Rapado2.jpeg') }}" alt="Rapado 2" width="120">
+        </figure>
+    </div>
+    <div class="figure-container mui-card">
+        <figure>
+            <img src="{{ url_for('static', filename='images/Rapado3.jpg') }}" alt="Rapado 2" width="120">
+        </figure>
+    </div>
+    <div class="figure-container mui-card">
+        <figure>
+            <img src="{{ url_for('static', filename='images/Rapado4.jpg') }}" alt="Rapado 2" width="120">
+        </figure>
+    </div>
+    <p><strong>IMPORTANTE: Si tu rapado es solo en la nuca o solo en un lado y muy poco (por ejemplo, 2 o 3 dedos de alto), cuenta como "CABEZA COMPLETA".</strong></p>
+    <div class="figure-container mui-card" >
+        <figure>
+            <img src="{{ url_for('static', filename='images/rapadoCabezaCompleta1.jpeg') }}" alt="Rapado Cabeza Completa" width="300" align-items: center;>
+        </figure>
+    </div>
+    <div class="figure-container mui-card" >
+        <figure>
+            <img src="{{ url_for('static', filename='images/rapadoCabezaCompleta2.jpg') }}" alt="Rapado Cabeza Completa" width="300" align-items: center;>
+        </figure>
+    </div>
+</section>
+
+
+</section>
+     <section id="preguntas-section">
+        <div class="accordion-item">
+            <h3 class="accordion-header">¿El proceso es doloroso?</h3>
+            <div class="accordion-content">
+                El proceso no es doloroso, aunque cada experiencia es diferente.
+                Si sos una persona que tiene una sensibilidad muy alta, o no estás acostumbradx a peinados tirantes, podes decirme, el enganche de las trenzas será menos tirante.
+            </div>
+        </div>
+    
+        <div class="accordion-item">
+            <h3 class="accordion-header">¿En qué casos no es recomendable hacerse trenzas?</h3>
+            <div class="accordion-content">
+                Si tienes el cabello decolorado recientemente desde la raíz y está muy maltratado, en ese caso recomiendo dejar crecer unos centímetros la raíz y recuperar el largo lo más que puedas. Tambien, Si notas que perdes mucho más de 150 cabellos por día.
+            </div>
+        </div>
+
+         <!-- Repite el patrón para otras secciones del acordeón -->
+      </div>    
+     </section>
+      
+     <!-- Cuidados -->
+    
+     <section id="cuidados-section">
+        <div class="title-container">
+            <h2>Tips para cuidar tus trenzas:</h2>
+        </div>
+        <ul>
+            <li>Lava tus trenzas una o dos veces por semana. Recuerda que el exceso de agua hace que duren menos.</li>
+            <li>Diluir el shampoo en agua y masajear con la yema de los dedos delicadamente la raíz. Deja que la ducha haga el trabajo de limpiar. El uso de acondicionador es opcional.</li>
+            <li>Hidrata tu cuero cabelludo cada tanto con algún aceite para que no se reseque tu cabello natural.</li>
+            <li>Lava las trenzas por la mañana para que se sequen durante el día. NO te vayas a dormir con las trenzas mojadas, esto puede generar olor a humedad.</li>
+            <li>Usa un pañuelo de satín para dormir, esto evitará que se genere frizz en la raíz.</li>
+            <li>Las trenzas pueden durar hasta dos meses o más teniendo en cuenta los cuidados.</li>
+        </ul>
+        <div class="accordion-item">
+            <h3 class="accordion-header">¿TE HICISTE TUS PRIMERAS TRENZAS Y ESTÁS EXPERIMENTANDO PICAZÓN Y/0 ALGUNAS ZONAS ROJAS?</h3>
+            <div class="accordion-content">
+                <p>Te dejo algunos tips para aliviarlo:</p>
+                <ul>
+                    <li>50% de agua + 50% vinagre de manzana: Rocía esta mezcla por todo el cuero cabelludo o por donde te pique más. Déjalo actuar por 15 minutos y enjuaga con abundante agua (recomiendo que lo hagas cuando toque lavar tus trenzas).</li>
+                    <li>Romero: Hierve una taza y media de agua y agrega el romero (cantidad acorde al agua). Déjalo reposar hasta que enfríe y pásalo a un rociador. Colócalo en todo el cuero cabelludo o donde tengas comezón. (No hace falta enjuague).</li>
+                    <li>Aloe Vera: Aplícalo en el cuero cabelludo y déjalo actuar. No hace falta enjuague.</li>
+                </ul>
+            </div>
+        </div>
+     </section>
+     <section id="spotify-container">
+        <div class="title-container">
+            <h1>Playlist @trenzas.laplata</h1>
+        </div>
+        <div class="spotify-player">
+            <!-- Código de incorporación del reproductor de Spotify -->
+            <iframe style="border-radius: 12px" src="https://open.spotify.com/embed/playlist/48NdbbGIDuFXcEJriRrvEK?utm_source=generator" width="100%" height="300" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+        </div>
+     </div>
+     {% endblock %}
+    </main> 
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                © Trenza$ La Plata
+            </div>
+            <div class="contact-info">
+                <a href="https://www.instagram.com/trenzas.laplata" onclick="redirectToInstagram()">
+                    <img src="{{ url_for('static', filename='images/logos/IGwhite.png') }}" alt="Instagram Logo">
+                </a>
+                <a href="https://wa.me/+5492215655406/" onclick="redirectToWhatsApp()">
+                    <img src="{{ url_for('static', filename='images/logos/WPPwhite.png') }}" alt="Whatsapp Logo">
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript para mantener el navbar fijo al hacer scroll
+        const navbar = document.querySelector('.navbar');
+        let prevScrollPos = window.pageYOffset;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollPos = window.pageYOffset;
+            if (prevScrollPos > currentScrollPos) {
+                navbar.classList.remove('scroll-down');
+                navbar.classList.add('scroll-up');
+            } else {
+                navbar.classList.remove('scroll-up');
+                navbar.classList.add('scroll-down');
+            }
+            prevScrollPos = currentScrollPos; 
+        });
+        // Función para manejar el click en el botón del menú
+        document.querySelector('.burger-menu').addEventListener('click', function () {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('menu-open');
+        });
+   
+        // Función para desplazarse a las secciones correspondientes al hacer clic en los elementos del menú
+        document.querySelectorAll('.navbar a').forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+                // Cierra el menú después de hacer clic en un elemento
+                const navbar = document.querySelector('.navbar');
+                navbar.classList.remove('menu-open');
+            });
+        });
+
+        // JavaScript para efecto de desplazamiento (parallax)
+        window.addEventListener('scroll', function() {
+            const scrollValue = window.scrollY;
+            const background = document.querySelector('body');
+            background.style.backgroundPositionY = -scrollValue * 0.5 + 'px'; // Ajusta el valor 0.5 según la velocidad de desplazamiento deseada
+            });
+       
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+           // JavaScript para el acordeón responsivo
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            accordionItems.forEach((item) => {
+               const header = item.querySelector('.accordion-header');
+               const content = item.querySelector('.accordion-content');
+
+                header.addEventListener('click', () => {
+                   const isActive = content.classList.contains('active');
+                   accordionItems.forEach((otherItem) => {
+                     const otherContent = otherItem.querySelector('.accordion-content');
+                       if (otherContent !== content) {
+                           otherContent.style.maxHeight = null;
+                           otherContent.classList.remove('active');
+                           otherItem.querySelector('.accordion-header').classList.remove('active');
+                      }
+                   });
+
+                   if (!isActive) {
+                       content.style.maxHeight = content.scrollHeight + 'px';
+                   } else {
+                       content.style.maxHeight = null;
+                   }
+
+                   content.classList.toggle('active');
+                   header.classList.toggle('active');
+               });
+            });
+         });
+      </script>
+      <script>
+        const chatbotContainer = document.getElementById('chatbot');
+        const closeButton = document.getElementById('cerrar');
+        const preguntaInput = document.getElementById('pregunta');
+        const enviarButton = document.getElementById('enviar');
+        const chat = document.getElementById('chat');
+        
+        closeButton.addEventListener('click', () => {
+            const chatMessages = chatbotContainer.querySelector('.chat');
+            const chatInput = chatbotContainer.querySelector('.chat-input');
+        
+            chatMessages.style.visibility = 'hidden'; // Oculta los mensajes
+            chatInput.style.visibility = 'visible'; // Muestra el área de entrada de texto
+            closeButton.style.visibility = 'hidden'; // Oculta el botón de cierre
+        
+            // Muestra el botón de enviar
+            enviarButton.style.visibility = 'visible';
+
+            // Oculta el chat completo
+            chatbotContainer.style.visibility = 'hidden';
+        
+            // Habilita el área de entrada de texto
+            preguntaInput.removeAttribute('disabled');
+        
+            // Mostrar el chatbotContainer como abierto
+            chatbotContainer.classList.add('open');
+        });
+        
+        enviarButton.addEventListener('click', () => {
+            const pregunta = preguntaInput.value;
+            if (pregunta.trim() !== '') {
+                enviarPregunta(pregunta);
+                preguntaInput.value = '';
+        
+                // Muestra los mensajes del chat después de enviar un mensaje
+                const chatMessages = chatbotContainer.querySelector('.chat');
+                chatMessages.style.visibility = 'visible';
+            }
+        });
+        
+        // Mostrar el botón de cierre cuando el chatbot se despliegue
+        chatbotContainer.addEventListener('click', () => {
+            chatbotContainer.classList.add('open');
+            closeButton.style.visibility = 'visible'; // Muestra el botón de cierre
+        });
+        
+        function enviarPregunta(pregunta) {
+            const messageReceived = createMessage('received', pregunta);
+            chat.appendChild(messageReceived);
+        
+            fetch('/chatbot', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ pregunta: pregunta })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const respuesta = data.respuesta;
+                const messageResponse = createMessage('response', respuesta);
+                chat.appendChild(messageResponse);
+            })
+            .catch(error => console.error('Error al enviar la pregunta:', error));
+        }
+        
+        function createMessage(className, text) {
+            const message = document.createElement('div');
+            message.className = `chat-message ${className}`;
+            message.textContent = text;
+            return message;
+        }
+        
+     </script>  
+     <script>
+        var lisasImages = {{ lisasImages|tojson|safe }};
+        var degradeImages = {{ degradeImages|tojson|safe }};
+        var currentImageIndexLisas = 0;
+        var currentImageIndexDegrade = 0;
+    
+        function cambiarImagen(tipo, accion) {
+            var imagen = document.getElementById(tipo === 'lisas' ? 'imagen-lisas' : 'imagen-degrade');
+            var currentIndex = tipo === 'lisas' ? currentImageIndexLisas : currentImageIndexDegrade;
+            var images = tipo === 'lisas' ? lisasImages : degradeImages;
+            
+            if (accion === 'anterior') {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+            } else {
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+    
+            imagen.src = images[currentIndex];
+    
+            if (tipo === 'lisas') {
+                currentImageIndexLisas = currentIndex;
+            } else {
+                currentImageIndexDegrade = currentIndex;
+            }
+        }
+    </script>
+    <!--jQuery -->
+    <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+     
+    <!-- UIkit -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.7.0/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.7.0/js/uikit-icons.min.js"></script>
+
+    <!-- Material UI -->
+    <linkrel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/mui/5.0.0-beta.0/css/mui.min.css"/>
+</body>
+</html>
+
