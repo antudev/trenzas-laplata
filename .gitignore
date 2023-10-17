@@ -6,7 +6,8 @@ Archivo *.pyc: Puedes ignorar todos los archivos de caché Python para evitar qu
 
 *.pyc
 
-Directorio venv/ o virtualenv/: Si estás utilizando un entorno virtual para tu proyecto Flask, el directorio que lo contiene (generalmente llamado venv o virtualenv) debe ser ignorado. No se deben incluir los archivos del entorno virtual en el repositorio, ya que pueden ser reconstruidos fácilmente.
+Directorio env/: Si estás utilizando un entorno virtual para tu proyecto Flask, el directorio que lo contiene (generalmente llamado venv o virtualenv) debe ser ignorado. No se deben incluir los archivos del entorno virtual en el repositorio, ya que pueden ser reconstruidos fácilmente.
+env/
 
 Archivo .env o .flaskenv: Si estás utilizando archivos de configuración como .env o .flaskenv para almacenar variables de entorno o configuración específica, es una buena práctica no incluirlos en el repositorio. En su lugar, deberías incluir un archivo de ejemplo (por ejemplo, .env.example) que contenga valores predeterminados o ejemplos y agregar el archivo real a tu archivo .gitignore.
 
