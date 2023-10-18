@@ -2,11 +2,13 @@ from flask import Flask, render_template, request, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine, exc, event, select 
 
+
 app = Flask(__name__)
 
+# Configura la conexión a la base de datos PostgreSQL
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://trenzas_laplata_user:GHN0TDdA34WH7criH95dGVBU7d7pebSM@dpg-cko5h3ejmi5c73esdp70-a/trenzas_laplata'
 
-# Inicializar la extensión SQLAlchemy
+# Inicializa la extensión SQLAlchemy
 db = SQLAlchemy(app)
 
 # Función para realizar el "ping" de la conexión
