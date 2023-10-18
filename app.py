@@ -7,7 +7,7 @@ app = Flask(__name__)
 if 'NETLIFY' in os.environ:
     # Configuración específica de Netlify
     server_address = '0.0.0.0'
-    port = int(os.environ.get('PORT'))
+    port = int(os.environ.get('PORT', 5000))
 else:
     # Configuración local
     server_address = '127.0.0.1'
