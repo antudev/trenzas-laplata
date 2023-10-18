@@ -6,7 +6,8 @@ from sqlalchemy import create_engine, exc, event, select
 app = Flask(__name__)
 
 # Configura la conexión a la base de datos PostgreSQL
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://trenzado_user:v9q8ouITxUvyJJl48ZPzC7plccsr2bdT@dpg-cko6buujmi5c73e748tg-a/trenzado'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://trenzado_user:v9q8ouITxUvyJJl48ZPzC7plccsr2bdT@dpg-cko6buujmi5c73e748tg-a.oregon-postgres.render.com/trenzado'
+
 
 # Inicializa la extensión SQLAlchemy
 db = SQLAlchemy(app)
@@ -157,7 +158,7 @@ def obtener_lista_de_precios():
 if __name__ == '__main__':
     
     from app import db
-    from app import Turno, trenzado, PrecioDescripcion
+    from app import  trenzado, PrecioDescripcion
     with app.app_context():
         db.create_all()
 
