@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
-import os
 from sqlalchemy import create_engine, exc, event, select 
 
 app = Flask(__name__)
@@ -160,6 +159,9 @@ def obtener_lista_de_precios():
     return lista_precios
 
 if __name__ == '__main__':
+    
+    from app import db
+    from app import Turno, trenzado, PrecioDescripcion
     with app.app_context():
         db.create_all()
 
