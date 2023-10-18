@@ -1,4 +1,4 @@
 [build]
   base = "."   # Ruta al directorio de  proyecto Flask
-  command = "source env/bin/activate && pip install -r requirements.txt && python app.py"  # Comando para construir proyecto
+  command = "source ./env/bin/activate && pip install -r requirements.txt && python app.py"  # Comando para construir proyecto
   publish = "./static"  # Ruta al directorio que contiene archivos estáticos
