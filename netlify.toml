@@ -1,4 +1,11 @@
 [build]
-  base = "."   # Ruta al directorio de  proyecto Flask
-  command = "pip install -r requirements.txt && python app.py"  # Comando para construir proyecto
-  publish = "./static"  # Ruta al directorio que contiene archivos estáticos
+  base = "."
+  command = "pip install -r requirements.txt && python app.py"
+  publish = "./static"
+
+[context.production]
+  command = "pip install -r requirements.txt && python app.py"
+
+[context.deploy-preview]
+  command = "pip install -r requirements.txt && python app.py"
+
