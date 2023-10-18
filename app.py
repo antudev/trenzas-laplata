@@ -26,7 +26,7 @@ class Turno(db.Model):
     tipo_trenzado = db.Column(db.String(50), nullable=False)
     cliente = db.Column(db.String(100), nullable=False)
     
-class Trenzado(db.Model):
+class trenzado(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     tipo = db.Column(db.String(50), nullable=False)
     
@@ -44,7 +44,7 @@ class PrecioDescripcion(db.Model):
 def base():
     trenzados_data = []
 
-    tipos_de_trenzado = Trenzado.query.all()
+    tipos_de_trenzado = trenzado.query.all()
 
     for tipo_trenzado in tipos_de_trenzado:
         trenzado_info = {'tipo': tipo_trenzado.tipo, 'precios': {}}
@@ -84,13 +84,13 @@ def base():
 
 @app.route('/precios')
 def mostrar_precios():
-    trenzados = Trenzado.query.all()
+    trenzados = trenzado.query.all()
     return render_template('precios.html', trenzados=trenzados)
 
 # Aplicaciones tipos.de.trenzado
 @app.route('/tipos_de_trenzado')
 def tipos_de_trenzado():
-    tipos = Trenzado.query.all()
+    tipos = trenzado.query.all()
     return render_template('tipos_de_trenzado.html', tipos=tipos)
 
 
@@ -106,7 +106,7 @@ def chatbot():
 
 
     elif 'tipos de trenzados' in pregunta or 'tipos' in pregunta or 'tipo' in pregunta:
-        tipos = ', '.join([tipo.tipo for tipo in Trenzado.query.all()])
+        tipos = ', '.join([tipo.tipo for tipo in trenzado.query.all()])
         respuesta = f"Ofrecemos los siguientes tipos de trenzados: {tipos}."
     
     # Agregar lógica para manejar preguntas sobre tipos específicos de trenzados y precios
@@ -135,7 +135,7 @@ def chatbot():
 # Función para obtener la lista de precios desde la base de datos
 def obtener_lista_de_precios():
     precios = {}
-    tipos_de_trenzado = Trenzado.query.all()
+    tipos_de_trenzado = trenzado.query.all()
     for tipo in tipos_de_trenzado:
         precios_descripciones = tipo.precios_descripciones
         precios[tipo.tipo] = {}
@@ -155,13 +155,13 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
 
-        if Trenzado.query.count() == 0:
+        if trenzado.query.count() == 0:
             # Creación de instancias de Trenzado
             
-            tipo_small = Trenzado(tipo='small.finas')
-            tipo_medium = Trenzado(tipo='medium.medianas')
-            tipo_large = Trenzado(tipo='large.grande')
-            tipo_jumbo = Trenzado(tipo='jumbo.extragrande')
+            tipo_small = trenzado(tipo='small.finas')
+            tipo_medium = trenzado(tipo='medium.medianas')
+            tipo_large = trenzado(tipo='large.grande')
+            tipo_jumbo = trenzado(tipo='jumbo.extragrande')
 
             # Agregar instancias de Trenzado a la sesión
             db.session.add_all([tipo_small, tipo_medium, tipo_large, tipo_jumbo])
