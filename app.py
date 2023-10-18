@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, exc, event, select
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///catalog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://trenza_laplata_user:seMHvzIhTj9RZdwoEC5Ozbyykll1zvUf@dpg-cko50om1101c73dtf090-a/trenza_laplata'
 
 # Inicializar la extensión SQLAlchemy
 db = SQLAlchemy(app)
