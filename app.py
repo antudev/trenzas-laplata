@@ -6,7 +6,7 @@ from sqlalchemy import create_engine, exc, event, select
 app = Flask(__name__)
 
 # Configura la conexión a la base de datos PostgreSQL
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://trenzado_user:v9q8ouITxUvyJJl48ZPzC7plccsr2bdT@dpg-cko6buujmi5c73e748tg-a/trenzado'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://trenzado_user:v9q8ouITxUvyJJl48ZPzC7plccsr2bdT@dpg-cko6buujmi5c73e748tg-a/trenzado'
 
 # Inicializa la extensión SQLAlchemy
 db = SQLAlchemy(app)
@@ -28,7 +28,6 @@ def ping_connection(connection, branch):
 
 # Configura la carpeta de plantillas (templates)
 app.template_folder = 'templates'
-
     
 class trenzado(db.Model):
     id = db.Column(db.Integer, primary_key=True)
