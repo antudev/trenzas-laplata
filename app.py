@@ -1,7 +1,18 @@
 from flask import Flask, render_template, request, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
+
+if 'NETLIFY' in os.environ:
+    # Configuración específica de Netlify
+    server_address = '0.0.0.0'
+    port = int(os.environ.get('PORT'))
+else:
+    # Configuración local
+    server_address = '127.0.0.1'
+    port = 5000
+    
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///catalog.db'
 # Inicializar la extensión SQLAlchemy
 db = SQLAlchemy(app)
@@ -206,6 +217,6 @@ if __name__ == '__main__':
             ])
             db.session.commit()
 
-        app.run()
+        app.run(host=server_address, port=port)
 
 
