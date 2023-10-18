@@ -1,11 +1,10 @@
 [build]
-  base = "."
-  command = "pip install -r requirements.txt && python app.py"
-  publish = "./static"
+base = "."
+command = "pip install -r requirements.txt && gunicorn -c gunicorn_config.py app:app"
+publish = "./static"
 
 [context.production]
-  command = "pip install -r requirements.txt && python app.py"
+command = "pip install -r requirements.txt && gunicorn -c gunicorn_config.py app:app"
 
 [context.deploy-preview]
-  command = "pip install -r requirements.txt && python app.py"
-
+command = "pip install -r requirements.txt && gunicorn -c gunicorn_config.py app:app"
