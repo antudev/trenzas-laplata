@@ -4,7 +4,8 @@ import os
 
 app = Flask(__name__)
 
-if 'NETLIFY' in os.environ:
+
+if 'RENDER' in os.environ:
     # Configuración específica de Netlify
     server_address = '0.0.0.0'
     port = int(os.environ.get('PORT', 5000))
@@ -14,6 +15,7 @@ else:
     port = 5000
     
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///catalog.db'
+
 # Inicializar la extensión SQLAlchemy
 db = SQLAlchemy(app)
 
@@ -39,6 +41,74 @@ class PrecioDescripcion(db.Model):
     
     trenzado_id = db.Column(db.Integer, db.ForeignKey('trenzado.id'), nullable=False)
 
+
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+
+        if trenzado.query.count() == 0:
+            # Creación de instancias de Trenzado
+            
+            tipo_small = trenzado(tipo='small.finas')
+            tipo_medium = trenzado(tipo='medium.medianas')
+            tipo_large = trenzado(tipo='large.grande')
+            tipo_jumbo = trenzado(tipo='jumbo.extragrande')
+
+            # Agregar instancias de Trenzado a la sesión
+            db.session.add_all([tipo_small, tipo_medium, tipo_large, tipo_jumbo])
+            db.session.commit()
+
+            # Instancias de PrecioDescripcion y relación con Trenzado
+
+            precio_small_rapadoalto = PrecioDescripcion(precio=21000, descripcion='rapado lateral/alto')
+            precio_small_muchacantidad = PrecioDescripcion(precio=24000, descripcion='cabeza completa')
+            tipo_small.precios_descripciones.extend([precio_small_rapadoalto, precio_small_muchacantidad])
+
+            precio_medium_rapadoalto = PrecioDescripcion(precio=20000, descripcion='rapado lateral/alto')
+            precio_medium_muchacantidad = PrecioDescripcion(precio=23000, descripcion='cabeza completa')
+            tipo_medium.precios_descripciones.extend([precio_medium_rapadoalto, precio_medium_muchacantidad])
+
+            precio_large_rapadoalto = PrecioDescripcion(precio=18000, descripcion='rapado lateral/alto')
+            precio_large_muchacantidad = PrecioDescripcion(precio=21800, descripcion='cabeza completa')
+            tipo_large.precios_descripciones.extend([precio_large_rapadoalto, precio_large_muchacantidad])
+            
+            precio_jumbo_rapadoalto = PrecioDescripcion(precio=17000, descripcion='rapado lateral/alto')
+            precio_jumbo_muchacantidad = PrecioDescripcion(precio=20000, descripcion='cabeza completa')
+            tipo_jumbo.precios_descripciones.extend([precio_jumbo_rapadoalto, precio_jumbo_muchacantidad])
+
+            # Instancias de PrecioDescripcion para colores degradé
+                        
+
+            precio_small_rapadoalto_degrade = PrecioDescripcion(precio=21300, descripcion='rapado lateral/alto degrade')
+            precio_small_muchacantidad_degrade = PrecioDescripcion(precio=24400, descripcion='cabeza completa degrade')
+            tipo_small.precios_descripciones.extend([precio_small_rapadoalto_degrade, precio_small_muchacantidad_degrade])
+
+            precio_medium_rapadoalto_degrade = PrecioDescripcion(precio=20300, descripcion='rapado lateral/alto degrade')
+            precio_medium_muchacantidad_degrade = PrecioDescripcion(precio=23400, descripcion='cabeza completa degrade')
+            tipo_medium.precios_descripciones.extend([precio_medium_rapadoalto_degrade, precio_medium_muchacantidad_degrade])
+
+            precio_large_rapadoalto_degrade = PrecioDescripcion(precio=18300, descripcion='rapado lateral/alto degrade')
+            precio_large_muchacantidad_degrade = PrecioDescripcion(precio=22200, descripcion='cabeza completa degrade')
+            tipo_large.precios_descripciones.extend([precio_large_rapadoalto_degrade, precio_large_muchacantidad_degrade])
+            
+            precio_jumbo_rapadoalto_degrade = PrecioDescripcion(precio=17300, descripcion='rapado lateral/alto degrade')
+            precio_jumbo_muchacantidad_degrade = PrecioDescripcion(precio=20400, descripcion='cabeza completa degrade')
+            tipo_jumbo.precios_descripciones.extend([precio_jumbo_rapadoalto_degrade, precio_jumbo_muchacantidad_degrade])
+
+            # Instancias de PrecioDescripcion a la sesión y confirmar los cambios
+            db.session.add_all([
+                precio_small_rapadoalto, precio_small_muchacantidad,
+                precio_medium_rapadoalto, precio_medium_muchacantidad,
+                precio_large_rapadoalto, precio_large_muchacantidad,
+                precio_jumbo_rapadoalto, precio_jumbo_muchacantidad,
+                precio_small_rapadoalto_degrade, precio_small_muchacantidad_degrade,
+                precio_medium_rapadoalto_degrade, precio_medium_muchacantidad_degrade,
+                precio_large_rapadoalto_degrade, precio_large_muchacantidad_degrade,
+                precio_jumbo_rapadoalto_degrade, precio_jumbo_muchacantidad_degrade
+            ])
+            db.session.commit()
+
+        app.run(host=server_address, port=port)
 
 @app.route('/')
 def base():
@@ -150,73 +220,5 @@ def obtener_lista_de_precios():
             lista_precios += f"  - {descripcion}: ${precio}\n"
 
     return lista_precios
-
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-
-        if trenzado.query.count() == 0:
-            # Creación de instancias de Trenzado
-            
-            tipo_small = trenzado(tipo='small.finas')
-            tipo_medium = trenzado(tipo='medium.medianas')
-            tipo_large = trenzado(tipo='large.grande')
-            tipo_jumbo = trenzado(tipo='jumbo.extragrande')
-
-            # Agregar instancias de Trenzado a la sesión
-            db.session.add_all([tipo_small, tipo_medium, tipo_large, tipo_jumbo])
-            db.session.commit()
-
-            # Instancias de PrecioDescripcion y relación con Trenzado
-
-            precio_small_rapadoalto = PrecioDescripcion(precio=21000, descripcion='rapado lateral/alto')
-            precio_small_muchacantidad = PrecioDescripcion(precio=24000, descripcion='cabeza completa')
-            tipo_small.precios_descripciones.extend([precio_small_rapadoalto, precio_small_muchacantidad])
-
-            precio_medium_rapadoalto = PrecioDescripcion(precio=20000, descripcion='rapado lateral/alto')
-            precio_medium_muchacantidad = PrecioDescripcion(precio=23000, descripcion='cabeza completa')
-            tipo_medium.precios_descripciones.extend([precio_medium_rapadoalto, precio_medium_muchacantidad])
-
-            precio_large_rapadoalto = PrecioDescripcion(precio=18000, descripcion='rapado lateral/alto')
-            precio_large_muchacantidad = PrecioDescripcion(precio=21800, descripcion='cabeza completa')
-            tipo_large.precios_descripciones.extend([precio_large_rapadoalto, precio_large_muchacantidad])
-            
-            precio_jumbo_rapadoalto = PrecioDescripcion(precio=17000, descripcion='rapado lateral/alto')
-            precio_jumbo_muchacantidad = PrecioDescripcion(precio=20000, descripcion='cabeza completa')
-            tipo_jumbo.precios_descripciones.extend([precio_jumbo_rapadoalto, precio_jumbo_muchacantidad])
-
-            # Instancias de PrecioDescripcion para colores degradé
-                        
-
-            precio_small_rapadoalto_degrade = PrecioDescripcion(precio=21300, descripcion='rapado lateral/alto degrade')
-            precio_small_muchacantidad_degrade = PrecioDescripcion(precio=24400, descripcion='cabeza completa degrade')
-            tipo_small.precios_descripciones.extend([precio_small_rapadoalto_degrade, precio_small_muchacantidad_degrade])
-
-            precio_medium_rapadoalto_degrade = PrecioDescripcion(precio=20300, descripcion='rapado lateral/alto degrade')
-            precio_medium_muchacantidad_degrade = PrecioDescripcion(precio=23400, descripcion='cabeza completa degrade')
-            tipo_medium.precios_descripciones.extend([precio_medium_rapadoalto_degrade, precio_medium_muchacantidad_degrade])
-
-            precio_large_rapadoalto_degrade = PrecioDescripcion(precio=18300, descripcion='rapado lateral/alto degrade')
-            precio_large_muchacantidad_degrade = PrecioDescripcion(precio=22200, descripcion='cabeza completa degrade')
-            tipo_large.precios_descripciones.extend([precio_large_rapadoalto_degrade, precio_large_muchacantidad_degrade])
-            
-            precio_jumbo_rapadoalto_degrade = PrecioDescripcion(precio=17300, descripcion='rapado lateral/alto degrade')
-            precio_jumbo_muchacantidad_degrade = PrecioDescripcion(precio=20400, descripcion='cabeza completa degrade')
-            tipo_jumbo.precios_descripciones.extend([precio_jumbo_rapadoalto_degrade, precio_jumbo_muchacantidad_degrade])
-
-            # Instancias de PrecioDescripcion a la sesión y confirmar los cambios
-            db.session.add_all([
-                precio_small_rapadoalto, precio_small_muchacantidad,
-                precio_medium_rapadoalto, precio_medium_muchacantidad,
-                precio_large_rapadoalto, precio_large_muchacantidad,
-                precio_jumbo_rapadoalto, precio_jumbo_muchacantidad,
-                precio_small_rapadoalto_degrade, precio_small_muchacantidad_degrade,
-                precio_medium_rapadoalto_degrade, precio_medium_muchacantidad_degrade,
-                precio_large_rapadoalto_degrade, precio_large_muchacantidad_degrade,
-                precio_jumbo_rapadoalto_degrade, precio_jumbo_muchacantidad_degrade
-            ])
-            db.session.commit()
-
-        app.run(host=server_address, port=port)
 
 
