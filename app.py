@@ -6,7 +6,7 @@ from sqlalchemy import create_engine, exc, event, select
 app = Flask(__name__)
 
 # Configura la conexión a la base de datos PostgreSQL
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://trenzas_laplata_user:GHN0TDdA34WH7criH95dGVBU7d7pebSM@dpg-cko5h3ejmi5c73esdp70-a/trenzas_laplata'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://trenzas_laplata_user:GHN0TDdA34WH7criH95dGVBU7d7pebSM@dpg-cko5h3ejmi5c73esdp70-a/trenzas_laplata'
 
 # Inicializa la extensión SQLAlchemy
 db = SQLAlchemy(app)
