@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify, url_for
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from sqlalchemy import create_engine, exc, event, select 
 import os
 
@@ -11,6 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
 
 # Inicializa la extensión SQLAlchemy
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 # Función para realizar el "ping" de la conexión
 def ping_connection(connection, branch):
