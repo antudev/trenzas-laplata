@@ -9,7 +9,6 @@ app = Flask(__name__)
 # Configura la conexión a la base de datos PostgreSQL
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
 
-
 # Inicializa la extensión SQLAlchemy
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
