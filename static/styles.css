@@ -684,7 +684,6 @@ input[type="text"] {
 
 /* Estilos para .mui-card-content */
 #tipos-extensiones .mui-card-content {
-    background-color: rgba(255, 223, 241, 0.8); /* Fondo semitransparente */
     padding: 10px; /* Espacio interior para separar el contenido de la tarjeta */
     text-align: center; /* Centra el contenido horizontalmente */
     border-radius: 10px; /* Bordes redondeados */
