@@ -272,9 +272,16 @@ h1 {
     }
     
     #tipo-rapado .mui-card-media img{
-        
         height: auto; /* Ajusta la altura automáticamente */
         border-radius: 10px;
+    }
+
+    #tipo-rapado h2 {
+        color: rgb(255, 223, 241);
+        font-size: 18px;
+        margin-bottom: 10px;
+        flex: 100%;
+        text-align: center;
     }
     
 }
