@@ -195,6 +195,99 @@ h1 {
         width: 95%;
         position: fixed; /* Navbar con posición fija en la parte superior */
     }
+    /* Estilos para la sección de ejemplos "tipos-extensiones" */
+#tipos-extensiones {
+    color: rgb(255, 223, 241);
+    margin: 10px 0; /* Ajustar el margen superior e inferior */
+    padding: 10px; /* Ajustar el espacio interior */
+    background-color: rgba(255, 5, 148, 0.8);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#tipos-extensiones h2 {
+    font-family: 'Inconsolata';
+    color: rgb(255, 223, 241);
+    font-size: 16px; /* Ajustar el tamaño del título */
+    margin-bottom: 5px; /* Reducir el margen inferior */
+    flex: 100%; /* Establecer el ancho al 100% en dispositivos móviles */
+}
+
+#tipos-extensiones ul {
+    background-color: rgba(255, 5, 148, 0.8);
+    list-style-type: disc;
+    margin-left: 10px;
+    margin-bottom: 5px; /* Reducir el margen inferior */
+    flex: 100%;
+    border-radius: 10px;
+}
+
+#tipos-extensiones p {
+    margin-top: 5px; /* Reducir el margen superior */
+}
+
+#tipos-extensiones strong {
+    font-weight: bold;
+}
+
+/* Agregar estilos de Material-UI a las imágenes en "tipos-extensiones" */
+#tipos-extensiones .mui-card {
+    width: 90%; /* Ajustar el ancho de las tarjetas */
+    margin-right: 5px; /* Reducir el margen derecho */
+    margin-bottom: 5px; /* Reducir el margen inferior */
+    background-color: rgba(255, 5, 148, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    flex-direction: column;
+}
+
+#tipos-extensiones .mui-card-media {
+    padding-top: 0;
+    background-color: rgba(255, 5, 148, 0.8);
+    border-radius: 10px;
+}
+
+#tipos-extensiones .mui-card-list {
+    background-color: rgba(255, 5, 148, 0.8);
+}
+
+#tipos-extensiones .mui-card-media img {
+    width: 86%; /* Ajustar el ancho de la imagen en el contenedor */
+    height: auto;
+    background-color: rgba(255, 5, 148, 0.8);
+}
+
+/* Estilos para .extension-container */
+#tipos-extensiones .extension-container {
+    margin-top: 10px; /* Reducir el margen superior */
+    background-color: rgba(255, 223, 241, 0.5);
+    border: 2px solid rgb(255, 5, 148);
+    border-radius: 10px;
+    padding: 5px; /* Reducir el espacio interior */
+}
+
+/* Estilos para .image-container */
+#tipos-extensiones .image-container {
+    text-align: center;
+    padding: 5px;
+}
+
+/* Estilos para .mui-card-content */
+#tipos-extensiones .mui-card-content {
+    background-color: rgba(255, 223, 241, 0.8);
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+#tipos-extensiones .arrow-left, #tipos-extensiones .arrow-right {
+    background-color: rgba(255, 5, 148, 0.8);
+}
+
 }
 
 /* Estilos específicos para iPad (768x1024) */
