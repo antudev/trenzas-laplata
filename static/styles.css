@@ -288,6 +288,26 @@ h1 {
     background-color: rgba(255, 5, 148, 0.8);
 }
 
+table {
+    font-size: 8px; /* Disminuye el tamaño de fuente  */
+}
+th, td {
+    padding: 1.9px; /* Reduce el espacio entre celdas */
+}
+.spotify-container {
+    height: 30vh; /* Ajusta la altura del contenedor de Spotify  */
+}
+.chatbot-container {
+    position: fixed;
+    bottom: 0; /* Cambia la posición vertical a la parte inferior */
+    left: 0; /* Alinea a la izquierda */
+    right: 0; /* Ocupa todo el ancho disponible */
+    border-radius: 0; /* Quita el borde redondeado */
+    width: 100%; /* Ajusta el ancho al 100% */
+    box-shadow: none; /* Quita la sombra */
+    transform: translateY(0); /* Anula la transformación en Y */
+}
+
 }
 
 /* Estilos específicos para iPad (768x1024) */
@@ -380,28 +400,7 @@ h1 {
     
 }
 
-/* Reglas de estilo específicas para dispositivos móviles */
-@media (max-width: 768px) {
-    table {
-        font-size: 8px; /* Disminuye el tamaño de fuente  */
-    }
-    th, td {
-        padding: 1.9px; /* Reduce el espacio entre celdas */
-    }
-    .spotify-container {
-        height: 30vh; /* Ajusta la altura del contenedor de Spotify  */
-    }
-    .chatbot-container {
-        position: fixed;
-        bottom: 0; /* Cambia la posición vertical a la parte inferior */
-        left: 0; /* Alinea a la izquierda */
-        right: 0; /* Ocupa todo el ancho disponible */
-        border-radius: 0; /* Quita el borde redondeado */
-        width: 100%; /* Ajusta el ancho al 100% */
-        box-shadow: none; /* Quita la sombra */
-        transform: translateY(0); /* Anula la transformación en Y */
-    }
-}
+
 
 /* Estilos del contenedor del chatbot */
 .chatbot-container {
@@ -692,7 +691,7 @@ input[type="text"] {
     margin-top: 10px; /* Agrega margen superior para separar las tarjetas */
 }
 
-#tipos-extensiones .arrow-left .arrow-right {
+#tipos-extensiones .arrow-left, #tipos-extensiones .arrow-right {
     background-color: rgba(255, 5, 148, 0.8);
 }
 
