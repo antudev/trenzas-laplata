@@ -207,13 +207,7 @@ h1 {
     justify-content: center;
 }
 
-#tipos-extensiones h2 {
-    font-family: 'Inconsolata';
-    color: rgb(255, 223, 241);
-    font-size: 16px; /* Ajustar el tamaño del título */
-    margin-bottom: 5px; /* Reducir el margen inferior */
-    flex: 100%; /* Establecer el ancho al 100% en dispositivos móviles */
-}
+
 
 #tipos-extensiones ul {
     background-color: rgba(255, 5, 148, 0.8);
@@ -611,13 +605,6 @@ input[type="text"] {
     justify-content: center; /* Distribuye los elementos de forma equitativa */
 }
 
-#tipos-extensiones h2 {
-    font-family: 'Inconsolata';
-    color: rgb(255, 223, 241);
-    font-size: 18px; /* Aumenta el tamaño de los títulos */
-    margin-bottom: 10px; /* Agrega margen inferior para separar el título del contenido */
-    flex: 100%; /* Establece el ancho al 100% en dispositivos móviles */
-}
 
 #tipos-extensiones ul {
     background-color: rgba(255, 5, 148, 0.8); /* Fondo rosa semitransparente */
